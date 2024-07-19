@@ -37,7 +37,7 @@ const SelectionSort = ({ unsorted }) => {
       }
     }
     sort();
-  }, [setMax]);
+  }, [setMax, navigate]);
   return (
     <HStack height={"100vh"} width={"100%"} backgroundColor={backgroundColor}>
       {arr.map((ele) => (
