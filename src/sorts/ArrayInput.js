@@ -57,72 +57,77 @@ const ArrayInput = ({ setInput }) => {
   };
 
   return (
-    <Container maxW="xl" centerContent>
+    <Container maxW="lg" centerContent>
       <Box
-        d="flex"
-        p={3}
+        display="flex"
+        p={5}
         bg="white"
         w="100%"
-        m="40px 0px 15px 0px"
-        borderRadius="1g"
-        borderWidth="1px"
+        my={10}
+        borderRadius="lg"
+        boxShadow="lg"
         justifyContent="center"
+        textAlign="center"
       >
         <Text
-          fontFamily="work sans"
+          fontFamily="Work Sans"
           fontSize="4xl"
-          textAlign="center"
-          fontWeight={600}
+          fontWeight="bold"
+          color="gray.800"
         >
           Sorting Visualizer
         </Text>
       </Box>
       <Box
-        d="flex"
-        p={4}
+        display="flex"
+        p={6}
         bg="white"
         w="100%"
-        borderRadius="1g"
-        borderWidth="1px"
+        borderRadius="lg"
+        boxShadow="lg"
       >
-        <Tabs variant="soft-rounded" isFitted colorScheme="blue">
-          <TabPanels>
-            <TabPanel>
-              <VStack
-                divider={<StackDivider borderColor="gray.200" />}
-                spacing={5}
-                align="stretch"
-                p={4}
-                maxW="400px"
-                mx="auto"
-                mt="100px"
-              >
-                <FormControl id="array-input" isRequired>
-                  <FormLabel>Enter numbers separated by commas</FormLabel>
-                  <Input
-                    placeholder="e.g. 10, 9, 8, 7, 6"
-                    value={arrayInput}
-                    onChange={handleInputChange}
-                  />
-                </FormControl>
-                <FormControl id="algorithm" isRequired>
-                  <FormLabel>Select Sorting Algorithm</FormLabel>
-                  <Select
-                    placeholder="Select algorithm"
-                    onChange={handleAlgorithmChange}
-                  >
-                    <option value="bubblesort">Bubble Sort</option>
-                    <option value="selectionSort">Selection Sort</option>
-                    <option value="insertionSort">Insertion Sort</option>
-                  </Select>
-                </FormControl>
-                <Button colorScheme="teal" onClick={handleSubmit}>
-                  Submit
-                </Button>
-              </VStack>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
+        <VStack
+          divider={<StackDivider borderColor="gray.200" />}
+          spacing={6}
+          align="stretch"
+          w="100%"
+          maxW="400px"
+          mx="auto"
+        >
+          <FormControl id="array-input" isRequired>
+            <FormLabel>Enter numbers separated by commas</FormLabel>
+            <Input
+              placeholder="e.g. 10, 9, 8, 7, 6"
+              value={arrayInput}
+              onChange={handleInputChange}
+              _placeholder={{ color: "gray.500" }}
+              _hover={{ borderColor: "teal.500" }}
+              _focus={{
+                borderColor: "teal.500",
+                boxShadow: "0 0 0 1px teal.500",
+              }}
+            />
+          </FormControl>
+          <FormControl id="algorithm" isRequired>
+            <FormLabel>Select Sorting Algorithm</FormLabel>
+            <Select
+              placeholder="Select algorithm"
+              onChange={handleAlgorithmChange}
+              _hover={{ borderColor: "teal.500" }}
+              _focus={{
+                borderColor: "teal.500",
+                boxShadow: "0 0 0 1px teal.500",
+              }}
+            >
+              <option value="bubblesort">Bubble Sort</option>
+              <option value="selectionSort">Selection Sort</option>
+              <option value="insertionSort">Insertion Sort</option>
+            </Select>
+          </FormControl>
+          <Button colorScheme="teal" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </VStack>
       </Box>
     </Container>
   );
