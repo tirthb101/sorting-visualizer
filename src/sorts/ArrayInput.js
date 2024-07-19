@@ -13,8 +13,6 @@ import {
   Box,
   Text,
   Tabs,
-  TabList,
-  Tab,
   TabPanels,
   TabPanel,
 } from "@chakra-ui/react";
