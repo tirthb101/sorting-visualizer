@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { color } from "../config";
 import {
   VStack,
   FormControl,
@@ -12,9 +13,6 @@ import {
   Container,
   Box,
   Text,
-  Tabs,
-  TabPanels,
-  TabPanel,
 } from "@chakra-ui/react";
 
 const ArrayInput = ({ setInput }) => {
@@ -42,8 +40,16 @@ const ArrayInput = ({ setInput }) => {
       });
       return;
     }
-    const array = arrayInput.split(",").map(Number);
-    if (array.some(isNaN)) {
+    const array = arrayInput
+      .split(",")
+      .map((num) => ({ val: Number(num), color: color }));
+    const isValidArray = array.every(
+      (item) =>
+        typeof item === "object" &&
+        item !== null &&
+        typeof item.val === "number"
+    );
+    if (!isValidArray) {
       toast({
         title: "Invalid input. Please enter numbers separated by commas.",
         status: "error",
@@ -55,6 +61,13 @@ const ArrayInput = ({ setInput }) => {
     setInput(array);
     navigate(`/${algorithm}`);
   };
+  const handleEvent = () => {
+    navigate("/");
+  };
+  useEffect(() => {
+    window.addEventListener("popstate", handleEvent);
+    return () => window.removeEventListener("popstate", handleEvent);
+  });
 
   return (
     <Container maxW="lg" centerContent>
